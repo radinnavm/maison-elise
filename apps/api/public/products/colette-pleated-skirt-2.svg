@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0.35" y2="1">
+<stop offset="0" stop-color="#c3baaf"/>
+<stop offset="1" stop-color="#a69884"/>
+</linearGradient>
+<radialGradient id="glow" cx="0.32" cy="0.2" r="0.9">
+<stop offset="0" stop-color="#ffffff" stop-opacity="0.5"/>
+<stop offset="0.55" stop-color="#ffffff" stop-opacity="0.08"/>
+<stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0.5" stop-color="#000000" stop-opacity="0"/>
+<stop offset="1" stop-color="#000000" stop-opacity="0.14"/>
+</linearGradient>
+</defs>
+<rect width="800" height="1000" fill="url(#bg)"/>
+<rect width="800" height="1000" fill="url(#glow)"/>
+<g fill="none" stroke="#62513e" stroke-linecap="round"><path d="M -40 181.5972977874335 C 151.65516875684258 214.11251460202038, 635.2372317016125 95.87536254897714, 840 169.77358258212917" stroke-opacity="0.059" stroke-width="1.60"/><path d="M -40 353.9255027528852 C 100.14246137440206 417.22804464399815, 581.8981640525162 187.03698322176933, 840 330.90639661066234" stroke-opacity="0.074" stroke-width="2.05"/><path d="M -40 506.61758181964973 C 123.09304932132363 576.5664917207323, 651.5728941485287 322.20681935315946, 840 481.18161458289245" stroke-opacity="0.089" stroke-width="1.14"/><path d="M -40 631.1806568766478 C 123.48450827226043 703.0893437261693, 566.7240303792059 441.6032097279094, 840 605.0320434768219" stroke-opacity="0.102" stroke-width="1.81"/><path d="M -40 751.9741725204512 C 76.6318831704557 790.737336659804, 566.7121275663376 649.7803761530668, 840 737.8784764697775" stroke-opacity="0.079" stroke-width="2.05"/><path d="M -40 906.1684100601124 C 161.7131938636303 966.1712642596103, 612.6810035407543 747.9790671705268, 840 884.349190351204" stroke-opacity="0.124" stroke-width="0.86"/></g>
+<text x="50%" y="620" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="250" font-weight="400" fill="#62513e" fill-opacity="0.11" letter-spacing="6">CP</text>
+<text x="48" y="954" font-family="Helvetica, Arial, sans-serif" font-size="18" letter-spacing="7" fill="#62513e" fill-opacity="0.5">MAISON ÉLISE</text>
+<rect width="800" height="1000" fill="url(#fade)"/>
+</svg>

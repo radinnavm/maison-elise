@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0.35" y2="1">
+<stop offset="0" stop-color="#bcb3a5"/>
+<stop offset="1" stop-color="#9d8e79"/>
+</linearGradient>
+<radialGradient id="glow" cx="0.32" cy="0.2" r="0.9">
+<stop offset="0" stop-color="#ffffff" stop-opacity="0.5"/>
+<stop offset="0.55" stop-color="#ffffff" stop-opacity="0.08"/>
+<stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0.5" stop-color="#000000" stop-opacity="0"/>
+<stop offset="1" stop-color="#000000" stop-opacity="0.14"/>
+</linearGradient>
+</defs>
+<rect width="800" height="1000" fill="url(#bg)"/>
+<rect width="800" height="1000" fill="url(#glow)"/>
+<g fill="none" stroke="#5b4b39" stroke-linecap="round"><path d="M -40 173.7431703476468 C 146.4551543481648 216.06161024654284, 646.7770137563348 62.176374250557274, 840 158.35464674804825" stroke-opacity="0.126" stroke-width="1.52"/><path d="M -40 349.0828380024759 C 155.8898165114224 417.6447955518961, 621.8125926144421 168.32858628127724, 840 324.151217075414" stroke-opacity="0.055" stroke-width="0.84"/><path d="M -40 509.60462704894593 C 150.86973946914077 584.1034318390302, 687.8836523666978 313.1986871478147, 840 482.5141525798244" stroke-opacity="0.074" stroke-width="1.40"/><path d="M -40 650.5435392061481 C 203.29681307822466 723.6383447865956, 583.6955938637258 457.8390517667867, 840 623.9636099041672" stroke-opacity="0.119" stroke-width="2.14"/><path d="M -40 766.8429492088035 C 110.94106145575641 811.4684946881607, 645.7196428216994 649.1937838541344, 840 750.6154781254008" stroke-opacity="0.097" stroke-width="0.88"/><path d="M -40 925.8355956727173 C 120.52723808586596 977.7149187098257, 550.9070475697519 789.0628349385224, 840 906.970387295587" stroke-opacity="0.146" stroke-width="2.20"/></g>
+<text x="50%" y="620" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="250" font-weight="400" fill="#5b4b39" fill-opacity="0.11" letter-spacing="6">LS</text>
+<text x="48" y="954" font-family="Helvetica, Arial, sans-serif" font-size="18" letter-spacing="7" fill="#5b4b39" fill-opacity="0.5">MAISON ÉLISE</text>
+<rect width="800" height="1000" fill="url(#fade)"/>
+</svg>

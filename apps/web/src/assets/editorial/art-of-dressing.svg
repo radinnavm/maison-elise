@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="1200" height="1500">
+<defs>
+<linearGradient id="ed" x1="0" y1="0" x2="0.4" y2="1">
+<stop offset="0" stop-color="#ded2c0"/>
+<stop offset="1" stop-color="#b09a80"/>
+</linearGradient>
+<radialGradient id="edGlow" cx="0.5" cy="0.3" r="0.8">
+<stop offset="0" stop-color="#f6efe3" stop-opacity="0.55"/>
+<stop offset="1" stop-color="#f6efe3" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="edFade" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0.55" stop-color="#1d1814" stop-opacity="0"/>
+<stop offset="1" stop-color="#1d1814" stop-opacity="0.28"/>
+</linearGradient>
+</defs>
+<rect width="1200" height="1500" fill="url(#ed)"/>
+<rect width="1200" height="1500" fill="url(#edGlow)"/>
+<path d="M 260 1500 L 260 560 A 340 340 0 0 1 940 560 L 940 1500 Z" fill="#f2eadc" fill-opacity="0.35"/>
+<g fill="none" stroke="#4a3b2c" stroke-linecap="round"><path d="M -60 276.8549584702123 C 123.80402123741806 366.93480604793876, 968.0417044926435 39.37172394711524, 1260 244.09865026012994" stroke-opacity="0.054" stroke-width="0.84"/><path d="M -60 442.9006069150637 C 265.73542701266706 488.77175923320465, 865.7959268298001 321.96756898541935, 1260 426.22018789028516" stroke-opacity="0.142" stroke-width="0.81"/><path d="M -60 624.684737274074 C 132.03498297929764 710.1467658567708, 1034.2976269964129 399.3757528287824, 1260 593.6076359712752" stroke-opacity="0.099" stroke-width="1.31"/><path d="M -60 775.0019025767106 C 147.4062341954559 831.8413143209182, 899.721743831411 625.1525443419814, 1260 754.3330255788169" stroke-opacity="0.068" stroke-width="1.35"/><path d="M -60 1032.1772086141282 C 237.3027363829315 1112.258892711252, 922.3357805237174 821.0527687217108, 1260 1003.056596215174" stroke-opacity="0.109" stroke-width="0.97"/><path d="M -60 1168.770076986053 C 133.24589237384498 1246.8356979591772, 1052.959507310763 962.960712602362, 1260 1140.3825784503715" stroke-opacity="0.091" stroke-width="1.85"/><path d="M -60 1387.0177401043475 C 287.1160378586501 1491.4315415988676, 830.838660305366 1111.7449907097034, 1260 1349.049085015431" stroke-opacity="0.073" stroke-width="2.14"/></g>
+<rect width="1200" height="1500" fill="url(#edFade)"/>
+</svg>

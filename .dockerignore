@@ -1,0 +1,30 @@
+# Dependencies (installed inside the image)
+node_modules
+**/node_modules
+
+# Build output
+**/dist
+**/build
+*.tsbuildinfo
+
+# Git / CI / editors
+.git
+.gitignore
+.github
+.vscode
+.idea
+
+# Environment files (never bake secrets into images)
+.env
+.env.*
+!.env.example
+
+# Tests, coverage and logs
+coverage
+test-results
+playwright-report
+*.log
+
+# Docs and local artifacts
+docs
+e2e

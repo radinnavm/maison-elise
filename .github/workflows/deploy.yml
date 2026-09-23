@@ -1,0 +1,51 @@
+name: Deploy
+
+# Runs only after the CI workflow succeeds on the main branch, so production
+# deployments never bypass lint/typecheck/test/build.
+on:
+  workflow_run:
+    workflows: ['CI']
+    types: [completed]
+    branches: [main]
+  # Allow a manual production deployment from the Actions tab.
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy to production
+    runs-on: ubuntu-latest
+    # On workflow_run, require a successful CI run on main.
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    environment: production
+    # Provider deploy hooks are configured as repository/environment secrets.
+    # Each step is a no-op until its secret is set, so this workflow is safe to
+    # keep in the repository before the providers are connected.
+    # See docs/DEPLOYMENT.md for provider selection and setup.
+    env:
+      API_DEPLOY_HOOK: ${{ secrets.API_DEPLOY_HOOK }}
+      WEB_DEPLOY_HOOK: ${{ secrets.WEB_DEPLOY_HOOK }}
+      ADMIN_DEPLOY_HOOK: ${{ secrets.ADMIN_DEPLOY_HOOK }}
+
+    steps:
+      - name: Trigger API deploy
+        if: ${{ env.API_DEPLOY_HOOK != '' }}
+        run: curl -fsS -X POST "$API_DEPLOY_HOOK"
+
+      - name: Trigger storefront deploy
+        if: ${{ env.WEB_DEPLOY_HOOK != '' }}
+        run: curl -fsS -X POST "$WEB_DEPLOY_HOOK"
+
+      - name: Trigger admin deploy
+        if: ${{ env.ADMIN_DEPLOY_HOOK != '' }}
+        run: curl -fsS -X POST "$ADMIN_DEPLOY_HOOK"
+
+      - name: Deployment summary
+        run: |
+          echo "### Deployment triggered" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "Migrations are applied by the platform release step or manually with" >> "$GITHUB_STEP_SUMMARY"
+          echo "\`prisma migrate deploy\` before the new API version serves traffic." >> "$GITHUB_STEP_SUMMARY"

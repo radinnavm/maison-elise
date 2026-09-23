@@ -1,0 +1,5 @@
+# Maison Élise admin
+#
+# The administration dashboard must never be indexed by search engines.
+User-agent: *
+Disallow: /

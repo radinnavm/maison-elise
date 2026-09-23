@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Baseline sitemap. Regenerate with real catalogue URLs and the production domain
+  before deployment:
+    SITE_URL=https://<production-domain> SITEMAP_API_URL=https://<api-domain>/api/v1 pnpm sitemap
+  Private routes are never included.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://REPLACE_WITH_PRODUCTION_DOMAIN/</loc>
+  </url>
+  <url>
+    <loc>https://REPLACE_WITH_PRODUCTION_DOMAIN/shop</loc>
+  </url>
+</urlset>

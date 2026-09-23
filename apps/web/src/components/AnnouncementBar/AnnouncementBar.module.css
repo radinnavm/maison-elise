@@ -1,0 +1,17 @@
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--announcement-height);
+  padding: var(--space-xs) var(--container-padding);
+  background-color: var(--color-accent);
+  color: var(--color-on-accent);
+  text-align: center;
+}
+
+.text {
+  font-size: var(--text-2xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+}

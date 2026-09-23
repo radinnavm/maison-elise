@@ -1,0 +1,68 @@
+# Production-oriented local stack for Maison Élise.
+#
+# The database is external (managed PostgreSQL/Supabase) and is NOT containerized.
+# Provide production-grade values via a root `.env` file (never commit it):
+#
+#   DATABASE_URL=postgresql://...        # external, non-localhost
+#   JWT_SECRET=<32+ random characters>
+#   CLIENT_URL=https://shop.example.com
+#   ADMIN_URL=https://admin.example.com
+#   APP_URL=https://shop.example.com
+#   STRIPE_SECRET_KEY=...                # optional
+#   STRIPE_WEBHOOK_SECRET=...            # optional
+#   EMAIL_PROVIDER_API_KEY=...           # optional
+#
+# The API validates production configuration and will refuse to start with
+# localhost URLs or a weak JWT secret (see apps/api/src/config/env.ts).
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    image: maison-elise-api
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: '4000'
+      DATABASE_URL: ${DATABASE_URL}
+      JWT_SECRET: ${JWT_SECRET}
+      CLIENT_URL: ${CLIENT_URL}
+      ADMIN_URL: ${ADMIN_URL:-}
+      APP_URL: ${APP_URL}
+      API_PUBLIC_URL: ${API_PUBLIC_URL:-http://localhost:4000}
+      STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY:-}
+      STRIPE_WEBHOOK_SECRET: ${STRIPE_WEBHOOK_SECRET:-}
+      EMAIL_PROVIDER_API_KEY: ${EMAIL_PROVIDER_API_KEY:-}
+      EMAIL_FROM: ${EMAIL_FROM:-}
+      EMAIL_REPLY_TO: ${EMAIL_REPLY_TO:-}
+      TRUST_PROXY: '1'
+    ports:
+      - '4000:4000'
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+      args:
+        VITE_API_URL: ${WEB_VITE_API_URL:-http://localhost:4000/api/v1}
+        VITE_STRIPE_PUBLISHABLE_KEY: ${VITE_STRIPE_PUBLISHABLE_KEY:-}
+    image: maison-elise-web
+    restart: unless-stopped
+    depends_on:
+      - api
+    ports:
+      - '8080:8080'
+
+  admin:
+    build:
+      context: .
+      dockerfile: apps/admin/Dockerfile
+      args:
+        VITE_API_URL: ${ADMIN_VITE_API_URL:-http://localhost:4000/api/v1}
+    image: maison-elise-admin
+    restart: unless-stopped
+    depends_on:
+      - api
+    ports:
+      - '8081:8080'

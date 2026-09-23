@@ -1,0 +1,44 @@
+{
+  "name": "maison-elise",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Premium fashion e-commerce platform (monorepo).",
+  "type": "module",
+  "packageManager": "pnpm@11.25.0",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "scripts": {
+    "dev": "pnpm --filter @maison-elise/shared build && pnpm -r --parallel dev",
+    "build": "pnpm -r build",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "pnpm --filter @maison-elise/shared build && pnpm -r typecheck",
+    "test": "pnpm --filter @maison-elise/shared build && pnpm -r test",
+    "test:watch": "pnpm --filter @maison-elise/web test:watch",
+    "test:coverage": "pnpm --filter @maison-elise/shared build && pnpm -r test:coverage",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "sitemap": "node apps/web/scripts/generate-sitemap.mjs",
+    "prisma:generate": "pnpm --filter @maison-elise/api prisma:generate",
+    "db:migrate": "pnpm --filter @maison-elise/api prisma:deploy",
+    "db:seed": "pnpm --filter @maison-elise/api prisma:seed",
+    "db:setup": "pnpm --filter @maison-elise/api db:setup"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.63.0",
+    "@typescript/native": "npm:typescript@^7.0.2",
+    "eslint": "^10.10.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.7",
+    "globals": "^17.12.0",
+    "prettier": "^3.9.8",
+    "typescript": "npm:@typescript/typescript6@^6.0.2",
+    "typescript-eslint": "^8.70.0"
+  }
+}

@@ -1,0 +1,55 @@
+.state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  padding-block: var(--space-5xl);
+  text-align: center;
+}
+
+/* Route-level suspense fallback: reserves height to avoid layout shift. */
+.route {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+}
+
+.spinner {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  border: 1px solid var(--color-border-strong);
+  border-top-color: var(--color-accent);
+  animation: spin 800ms linear infinite;
+}
+
+.text {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  letter-spacing: var(--tracking-wide);
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: var(--text-xl);
+  font-weight: 400;
+  letter-spacing: var(--tracking-tight);
+}
+
+.description {
+  max-width: 30rem;
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+}
+
+.action {
+  margin-top: var(--space-sm);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

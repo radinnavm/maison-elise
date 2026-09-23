@@ -1,0 +1,46 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-3xl);
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+}
+
+.control,
+.page {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  height: 2.5rem;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  transition:
+    color var(--transition-base),
+    border-color var(--transition-base);
+}
+
+.control:hover:not(:disabled),
+.page:hover {
+  color: var(--color-text);
+}
+
+.control:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.page {
+  border-bottom: 1px solid transparent;
+}
+
+.active {
+  color: var(--color-text);
+  border-bottom-color: var(--color-text);
+}

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+<defs>
+<linearGradient id="hero" x1="0" y1="0" x2="0.7" y2="1">
+<stop offset="0" stop-color="#cbbca6"/>
+<stop offset="0.5" stop-color="#b6a189"/>
+<stop offset="1" stop-color="#8f7a63"/>
+</linearGradient>
+<radialGradient id="heroGlow" cx="0.68" cy="0.24" r="0.75">
+<stop offset="0" stop-color="#f4ecdf" stop-opacity="0.62"/>
+<stop offset="0.6" stop-color="#f4ecdf" stop-opacity="0.12"/>
+<stop offset="1" stop-color="#f4ecdf" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="heroFade" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0.35" stop-color="#1d1814" stop-opacity="0"/>
+<stop offset="1" stop-color="#1d1814" stop-opacity="0.5"/>
+</linearGradient>
+<filter id="grain">
+<feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+<feColorMatrix type="saturate" values="0"/>
+</filter>
+</defs>
+<rect width="1920" height="1080" fill="url(#hero)"/>
+<rect width="1920" height="1080" fill="url(#heroGlow)"/>
+<g fill="none" stroke="#3a2f26" stroke-linecap="round"><path d="M -96 150.31605980610476 C 464.17728109359746 48.044450503774, 1423.9311976343395 252.58766910843553, 2016 114.520996550289" stroke-opacity="0.129" stroke-width="1.68"/><path d="M -96 297.84306435445325 C 421.8628816008567 148.36693638609722, 1505.3697874546053 447.3191923228093, 2016 245.52641956552864" stroke-opacity="0.115" stroke-width="1.69"/><path d="M -96 402.78254743544386 C 197.76171910464763 337.44297219626606, 1373.883454450965 468.12212267462166, 2016 379.91369610173166" stroke-opacity="0.148" stroke-width="1.50"/><path d="M -96 475.82728165592994 C 293.5904681235552 385.38263025395565, 1696.949339014292 566.2719330579042, 2016 444.171653665239" stroke-opacity="0.057" stroke-width="2.27"/><path d="M -96 610.9630002292804 C 231.66900644302368 494.990737946704, 1507.7067840456964 726.9352625118568, 2016 570.3727084303787" stroke-opacity="0.054" stroke-width="1.25"/><path d="M -96 700.0802039254457 C 173.95696767568586 573.139077669941, 1617.16903911531 827.0213301809505, 2016 655.650809736019" stroke-opacity="0.063" stroke-width="1.62"/><path d="M -96 805.1603185107931 C 375.9353206962347 660.720897509437, 1600.1031814724208 949.5997395121492, 2016 754.6065211603185" stroke-opacity="0.106" stroke-width="1.22"/><path d="M -96 936.2189543528482 C 448.4330924212932 863.6376551387831, 1583.3901450902224 1008.8002535669133, 2016 910.8154996279254" stroke-opacity="0.073" stroke-width="0.98"/></g>
+<rect width="1920" height="1080" filter="url(#grain)" opacity="0.05"/>
+<rect width="1920" height="1080" fill="url(#heroFade)"/>
+</svg>

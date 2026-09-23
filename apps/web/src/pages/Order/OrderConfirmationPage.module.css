@@ -1,0 +1,60 @@
+.page {
+  padding-top: var(--space-3xl);
+}
+
+.header {
+  max-width: 42rem;
+  margin-bottom: var(--space-2xl);
+}
+
+.eyebrow {
+  margin-bottom: var(--space-sm);
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: var(--text-2xl);
+  font-weight: 400;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+
+.lead {
+  margin-top: var(--space-md);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+}
+
+.panel {
+  max-width: 42rem;
+  padding: var(--space-xl);
+  background-color: var(--color-background-alt);
+  border: 1px solid var(--color-border);
+}
+
+.paymentSection {
+  max-width: 42rem;
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--color-border);
+}
+
+.paymentTitle {
+  margin-bottom: var(--space-lg);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-top: var(--space-2xl);
+}

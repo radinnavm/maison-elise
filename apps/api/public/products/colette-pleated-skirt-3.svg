@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0.6" y2="1">
+<stop offset="0" stop-color="#f6ebdc"/>
+<stop offset="1" stop-color="#baab95"/>
+</linearGradient>
+<radialGradient id="glow" cx="0.5" cy="0.34" r="0.75">
+<stop offset="0" stop-color="#ffffff" stop-opacity="0.55"/>
+<stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0.6" stop-color="#000000" stop-opacity="0"/>
+<stop offset="1" stop-color="#000000" stop-opacity="0.12"/>
+</linearGradient>
+</defs>
+<rect width="800" height="1000" fill="url(#bg)"/>
+<circle cx="400" cy="340" r="250" fill="#ffffff" fill-opacity="0.18"/>
+<circle cx="400" cy="340" r="250" fill="url(#glow)"/>
+<g fill="none" stroke="#62513e" stroke-linecap="round"><path d="M -40 194.4844475435093 C 192.41588765382764 93.9800286386162, 656.4392365030944 294.9888664484024, 840 159.30790092679672" stroke-opacity="0.063" stroke-width="1.59"/><path d="M -40 396.33739937562495 C 89.24168187007308 306.74372446956113, 566.4465726874769 485.9310742816888, 840 364.9796131585026" stroke-opacity="0.121" stroke-width="2.14"/><path d="M -40 620.381729262881 C 167.04895574226975 508.9647893537767, 600.0966362394392 731.7986691719852, 840 581.3858002946945" stroke-opacity="0.067" stroke-width="1.82"/><path d="M -40 843.6700127297082 C 206.5319727919996 723.6097778822297, 719.2205160036684 963.7302475771868, 840 801.6489305330907" stroke-opacity="0.086" stroke-width="2.08"/></g>
+<text x="50%" y="470" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="190" font-weight="400" fill="#62513e" fill-opacity="0.14" letter-spacing="6">CP</text>
+<text x="48" y="954" font-family="Helvetica, Arial, sans-serif" font-size="18" letter-spacing="7" fill="#62513e" fill-opacity="0.5">MAISON ÉLISE</text>
+<rect width="800" height="1000" fill="url(#fade)"/>
+</svg>

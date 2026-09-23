@@ -1,0 +1,120 @@
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.metaRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-md);
+  font-size: var(--text-sm);
+}
+
+.metaRow dt {
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  padding-block: var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.itemInfo {
+  min-width: 0;
+}
+
+.itemMeta {
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+.itemName {
+  margin-top: var(--space-2xs);
+  font-family: var(--font-serif);
+  font-size: var(--text-lg);
+  font-weight: 500;
+}
+
+.itemUnit {
+  margin-top: var(--space-2xs);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.itemTotal {
+  flex-shrink: 0;
+  font-size: var(--text-sm);
+}
+
+.shipping {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+  padding-block: var(--space-md);
+  border-top: 1px solid var(--color-border);
+}
+
+.shippingTitle {
+  margin-bottom: var(--space-2xs);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+}
+
+.shippingLine {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+}
+
+.totals {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.totalRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  font-size: var(--text-sm);
+}
+
+.totalRow dt {
+  color: var(--color-text-muted);
+}
+
+.grand {
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--text-lg);
+}
+
+.grand dt {
+  color: var(--color-text);
+}

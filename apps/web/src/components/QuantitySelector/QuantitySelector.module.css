@@ -1,0 +1,31 @@
+.selector {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--color-border-strong);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  color: var(--color-text);
+  transition: color var(--transition-base);
+}
+
+.button:hover:not(:disabled) {
+  color: var(--color-text-muted);
+}
+
+.button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.value {
+  min-width: 2.5rem;
+  text-align: center;
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
+}

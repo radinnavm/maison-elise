@@ -1,0 +1,23 @@
+# Maison Élise storefront
+#
+# Public catalogue routes are crawlable. Private/account/transactional routes are
+# excluded so search engines never index them.
+#
+# The sitemap URL depends on the production domain. Run `pnpm sitemap` with
+# SITE_URL set before deploying, then uncomment the line below (or let the
+# generator add it). See docs/DEPLOYMENT.md.
+
+User-agent: *
+Allow: /
+Disallow: /account
+Disallow: /cart
+Disallow: /bag
+Disallow: /checkout
+Disallow: /login
+Disallow: /register
+Disallow: /forgot-password
+Disallow: /order
+Disallow: /wishlist
+Disallow: /search
+
+# Sitemap: https://<production-domain>/sitemap.xml

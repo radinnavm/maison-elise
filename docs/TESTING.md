@@ -86,10 +86,12 @@ time.
 
 ## Production-hardening tests
 
-Route-level tests cover request ids, CORS (allowed vs unknown origin, preflight), authentication
-boundaries, malformed and oversized request bodies, non-leaking `500` responses, and health/readiness
-behavior. Rate limiting is disabled for the test environment by default; a dedicated test enables it
-with a low limit to assert the `429` path. Log formatting is intentionally not asserted.
+Route-level tests cover request ids, CORS (allowed vs unknown origin, preflight), CSRF origin
+validation, authentication/authorization boundaries, malformed and oversized request bodies,
+non-leaking `500` responses, and health/readiness behavior. Rate limiting is disabled for the test
+environment by default; a dedicated test enables it with a low limit to assert the `429` path. Email
+`PENDING` recovery and order-transition concurrency are covered at the service level. Log formatting
+is intentionally not asserted.
 
 ## Coverage
 
@@ -102,5 +104,6 @@ payment/cart/order flows) over static UI when interpreting the report.
 - Redux Toolkit / RTK Query internals.
 - Exact CSS/markup structure.
 - Trivial getters and static presentational components.
-- Stripe/Cloudinary SDK behaviour (mocked at the boundary).
+- Stripe SDK behaviour (mocked at the boundary).
 - Email provider SDK behaviour (Resend) and real email delivery — mocked at the boundary.
+- Cloudinary — not integrated; product images are static assets.

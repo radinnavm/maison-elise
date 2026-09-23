@@ -6,8 +6,6 @@ and a TypeScript/Express API with Prisma, PostgreSQL and Stripe, in a single pnp
 > Maison Élise is a portfolio application built to demonstrate realistic commerce engineering. It is
 > **not** an operating business: there are no real customers, sales or production deployments.
 
-[![CI](https://github.com/OWNER/REPO/actions/workflows/ci.yml/badge.svg)](.github/workflows/ci.yml)
-
 ---
 
 ## Project Preview

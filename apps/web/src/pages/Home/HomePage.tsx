@@ -1,7 +1,7 @@
-import { useGetProductsQuery } from '@/api/productsApi';
 import { Seo } from '@/components/Seo/Seo';
 import { buildWebsiteJsonLd } from '@/components/Seo/metadata';
 import { env } from '@/config/env';
+import { useCatalogProducts } from '@/data/catalogSource';
 
 import { EditorialSection } from './EditorialSection';
 import { Hero } from './Hero';
@@ -9,8 +9,8 @@ import { NewsletterSection } from './NewsletterSection';
 import { ProductSection } from './ProductSection';
 
 export function HomePage() {
-  const newArrivals = useGetProductsQuery({ sort: 'newest', page: 1, limit: 4 });
-  const featured = useGetProductsQuery({ sort: 'featured', page: 1, limit: 4 });
+  const newArrivals = useCatalogProducts({ sort: 'newest', page: 1, limit: 4 });
+  const featured = useCatalogProducts({ sort: 'featured', page: 1, limit: 4 });
 
   return (
     <>

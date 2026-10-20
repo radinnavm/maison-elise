@@ -10,6 +10,7 @@ import {
   useUpdateCartItemMutation,
 } from '@/api/cartApi';
 import { useAppDispatch, useAppSelector } from '@/app/hooks';
+import { env } from '@/config/env';
 import { selectIsAuthenticated } from '@/features/auth/authSlice';
 import {
   addItem as addGuestItem,
@@ -41,9 +42,10 @@ export function useCart(): UseCartResult {
   const dispatch = useAppDispatch();
   const isAuthenticated = useAppSelector(selectIsAuthenticated);
   const guestItems = useAppSelector(selectCartItems);
+  const usesServerCart = isAuthenticated && !env.demoCatalog;
 
   const { data, isLoading, error, refetch } = useGetCartQuery(undefined, {
-    skip: !isAuthenticated,
+    skip: !usesServerCart,
   });
   const [addCartItem, addState] = useAddCartItemMutation();
   const [updateCartItem, updateState] = useUpdateCartItemMutation();
@@ -52,7 +54,7 @@ export function useCart(): UseCartResult {
 
   const serverItems = useMemo(() => data?.data.items ?? [], [data]);
 
-  const items: CartLine[] = isAuthenticated
+  const items: CartLine[] = usesServerCart
     ? serverItems
     : guestItems.map((item) => ({
         id: item.variantId,
@@ -70,29 +72,29 @@ export function useCart(): UseCartResult {
         inStock: true,
       }));
 
-  const itemCount = isAuthenticated
+  const itemCount = usesServerCart
     ? (data?.data.itemCount ?? 0)
     : guestItems.reduce((total, item) => total + item.quantity, 0);
 
-  const subtotal = isAuthenticated
+  const subtotal = usesServerCart
     ? (data?.data.subtotal ?? 0)
     : guestItems.reduce((total, item) => total + item.unitPrice * item.quantity, 0);
 
   const addItem = useCallback(
     async (input: AddCartItemInput) => {
-      if (isAuthenticated) {
+      if (usesServerCart) {
         await addCartItem({ variantId: input.variantId, quantity: input.quantity ?? 1 }).unwrap();
         return;
       }
 
       dispatch(addGuestItem(input));
     },
-    [isAuthenticated, addCartItem, dispatch],
+    [usesServerCart, addCartItem, dispatch],
   );
 
   const updateQuantity = useCallback(
     async (variantId: string, quantity: number) => {
-      if (isAuthenticated) {
+      if (usesServerCart) {
         const line = serverItems.find((item) => item.variantId === variantId);
         if (!line) {
           return;
@@ -103,12 +105,12 @@ export function useCart(): UseCartResult {
 
       dispatch(updateGuestQuantity({ variantId, quantity }));
     },
-    [isAuthenticated, serverItems, updateCartItem, dispatch],
+    [usesServerCart, serverItems, updateCartItem, dispatch],
   );
 
   const removeItem = useCallback(
     async (variantId: string) => {
-      if (isAuthenticated) {
+      if (usesServerCart) {
         const line = serverItems.find((item) => item.variantId === variantId);
         if (!line) {
           return;
@@ -119,24 +121,24 @@ export function useCart(): UseCartResult {
 
       dispatch(removeGuestItem(variantId));
     },
-    [isAuthenticated, serverItems, removeCartItem, dispatch],
+    [usesServerCart, serverItems, removeCartItem, dispatch],
   );
 
   const clear = useCallback(async () => {
-    if (isAuthenticated) {
+    if (usesServerCart) {
       await clearServerCart().unwrap();
       return;
     }
 
     dispatch(clearGuestCart());
-  }, [isAuthenticated, clearServerCart, dispatch]);
+  }, [usesServerCart, clearServerCart, dispatch]);
 
   return {
     items,
     itemCount,
     subtotal,
     isAuthenticated,
-    isLoading: isAuthenticated && isLoading,
+    isLoading: usesServerCart && isLoading,
     error,
     isMutating:
       addState.isLoading || updateState.isLoading || removeState.isLoading || clearState.isLoading,

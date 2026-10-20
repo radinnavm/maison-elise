@@ -3,16 +3,11 @@ import { Link } from 'react-router';
 import { useAppDispatch, useAppSelector } from '@/app/hooks';
 import { HeartIcon } from '@/components/icons/Icons';
 import { IconButton } from '@/components/IconButton/IconButton';
+import { ProductPlaceholder } from '@/components/ProductPlaceholder/ProductPlaceholder';
 import { selectIsWishlisted, toggleWishlist } from '@/features/wishlist/wishlistSlice';
 import type { Product } from '@/types/product';
 import { formatPrice } from '@/utils/format';
-import {
-  getPrimaryImage,
-  getPrimaryImageAlt,
-  getSecondaryImage,
-  isInStock,
-  isOnSale,
-} from '@/utils/product';
+import { getPrimaryImage, isInStock, isOnSale } from '@/utils/product';
 
 import styles from './ProductCard.module.css';
 
@@ -26,7 +21,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
   const isWishlisted = useAppSelector((state) => selectIsWishlisted(state, product.id));
   const inStock = isInStock(product);
   const onSale = isOnSale(product);
-  const tag = product.isNew ? 'New' : undefined;
+  const tag = product.isNew ? 'New In' : undefined;
 
   function handleWishlistToggle() {
     dispatch(
@@ -41,33 +36,14 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
   }
 
   return (
-    <article className={styles.card}>
+    <article className={styles.card} data-priority={priority ? 'true' : undefined}>
       <div className={[styles.media, inStock ? '' : styles.mediaSoldOut].filter(Boolean).join(' ')}>
         <Link
           to={`/product/${product.slug}`}
           className={styles.imageLink}
           aria-label={`View ${product.name}`}
         >
-          <img
-            className={styles.image}
-            src={getPrimaryImage(product)}
-            alt={getPrimaryImageAlt(product)}
-            width="800"
-            height="1000"
-            loading={priority ? 'eager' : 'lazy'}
-            fetchPriority={priority ? 'high' : 'auto'}
-            decoding="async"
-          />
-          <img
-            className={`${styles.image} ${styles.imageSecondary}`}
-            src={getSecondaryImage(product)}
-            alt=""
-            width="800"
-            height="1000"
-            loading="lazy"
-            decoding="async"
-            aria-hidden="true"
-          />
+          <ProductPlaceholder name={product.name} />
         </Link>
 
         <div className={styles.badges}>

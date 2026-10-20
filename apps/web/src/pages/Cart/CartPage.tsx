@@ -8,6 +8,7 @@ import { QuantitySelector } from '@/components/QuantitySelector/QuantitySelector
 import { Seo } from '@/components/Seo/Seo';
 import { ErrorState } from '@/components/StateMessage/ErrorState';
 import { LoadingState } from '@/components/StateMessage/LoadingState';
+import { env } from '@/config/env';
 import { useCart } from '@/hooks/useCart';
 import { formatPrice } from '@/utils/format';
 
@@ -137,7 +138,11 @@ export function CartPage() {
               </p>
             ) : null}
 
-            <p className={styles.note}>Shipping and checkout arrive in a later milestone.</p>
+            <p className={styles.note}>
+              {env.demoCatalog
+                ? 'Demo catalog — checkout is a preview and does not create a real order.'
+                : 'Shipping and checkout arrive in a later milestone.'}
+            </p>
 
             <div className={styles.summaryActions}>
               <ButtonLink to="/checkout" variant="primary" size="md" fullWidth>

@@ -9,8 +9,8 @@ export interface SocialLink {
 }
 
 export const primaryNav: NavItem[] = [
-  { label: 'Women', to: '/shop' },
-  { label: 'Men', to: '/shop' },
+  { label: 'Women', to: '/shop/women' },
+  { label: 'Men', to: '/shop/men' },
   { label: 'New In', to: '/shop?sort=newest' },
   { label: 'Collections', to: '/shop' },
 ];
@@ -19,8 +19,8 @@ export const footerColumns: { title: string; links: NavItem[] }[] = [
   {
     title: 'Shop',
     links: [
-      { label: 'Women', to: '/shop' },
-      { label: 'Men', to: '/shop' },
+      { label: 'Women', to: '/shop/women' },
+      { label: 'Men', to: '/shop/men' },
       { label: 'New Arrivals', to: '/shop?sort=newest' },
       { label: 'Collections', to: '/shop' },
     ],

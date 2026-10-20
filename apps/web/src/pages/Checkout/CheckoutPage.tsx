@@ -12,10 +12,12 @@ import { Button, ButtonLink } from '@/components/Button/Button';
 import { EmptyState } from '@/components/EmptyState/EmptyState';
 import { Seo } from '@/components/Seo/Seo';
 import { LoadingState } from '@/components/StateMessage/LoadingState';
+import { env } from '@/config/env';
 import { selectCurrentUser } from '@/features/auth/authSlice';
 import { useCart } from '@/hooks/useCart';
 import { formatPrice } from '@/utils/format';
 
+import { DemoCheckoutPage } from './DemoCheckoutPage';
 import styles from './CheckoutPage.module.css';
 
 const ORDER_ERROR_MESSAGES: Record<string, string> = {
@@ -29,6 +31,14 @@ const ORDER_ERROR_MESSAGES: Record<string, string> = {
 const REFRESH_CART_CODES = ['INSUFFICIENT_STOCK', 'PRODUCT_UNAVAILABLE', 'VARIANT_NOT_FOUND'];
 
 export function CheckoutPage() {
+  if (env.demoCatalog) {
+    return <DemoCheckoutPage />;
+  }
+
+  return <LiveCheckoutPage />;
+}
+
+function LiveCheckoutPage() {
   const cart = useCart();
   const user = useAppSelector(selectCurrentUser);
   const navigate = useNavigate();

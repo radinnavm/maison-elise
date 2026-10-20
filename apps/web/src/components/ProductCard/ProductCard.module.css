@@ -20,29 +20,9 @@
   height: 100%;
 }
 
-.image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition:
-    opacity var(--transition-slow),
-    transform var(--transition-slow);
-}
-
-.imageSecondary {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-}
-
-.card:hover .imageSecondary,
-.imageLink:focus-visible .imageSecondary {
-  opacity: 1;
-}
-
-.card:hover .image,
-.imageLink:focus-visible .image {
-  transform: scale(1.02);
+.imageLink:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 4px;
 }
 
 .badges {

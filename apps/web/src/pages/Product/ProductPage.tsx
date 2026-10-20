@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router';
 
 import { getErrorMessage, normalizeApiError } from '@/api/apiError';
-import { useGetProductBySlugQuery, useGetProductsQuery } from '@/api/productsApi';
 import { useAppDispatch, useAppSelector } from '@/app/hooks';
 import { Breadcrumbs } from '@/components/Breadcrumbs/Breadcrumbs';
 import { Button, ButtonLink } from '@/components/Button/Button';
@@ -18,6 +17,7 @@ import { SizeSelector } from '@/components/SizeSelector/SizeSelector';
 import { ErrorState } from '@/components/StateMessage/ErrorState';
 import { LoadingState } from '@/components/StateMessage/LoadingState';
 import { env } from '@/config/env';
+import { useCatalogProduct, useCatalogProducts } from '@/data/catalogSource';
 import { selectIsWishlisted, toggleWishlist } from '@/features/wishlist/wishlistSlice';
 import { useCart } from '@/hooks/useCart';
 import type { Product } from '@/types/product';
@@ -42,9 +42,7 @@ function ProductDetailLoader({ slug }: ProductDetailLoaderProps) {
     isLoading,
     isError,
     error,
-  } = useGetProductBySlugQuery(slug ?? '', {
-    skip: !slug,
-  });
+  } = useCatalogProduct(slug);
 
   if (!slug) {
     return <ProductNotFound />;
@@ -142,7 +140,7 @@ function ProductDetailView({ product }: ProductDetailViewProps) {
     [],
   );
 
-  const { data: relatedData } = useGetProductsQuery({
+  const { data: relatedData } = useCatalogProducts({
     category: product.category.slug,
     sort: 'featured',
     page: 1,

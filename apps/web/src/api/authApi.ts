@@ -1,6 +1,7 @@
 import type { AuthResponse, LoginRequest, RegisterRequest } from '@maison-elise/shared';
 
 import { cartApi } from '@/api/cartApi';
+import { env } from '@/config/env';
 import { clearCredentials, setCredentials } from '@/features/auth/authSlice';
 import { clearCart, selectCartItems, type CartState } from '@/features/cart/cartSlice';
 
@@ -16,7 +17,7 @@ async function mergeGuestCart(
   merge: (items: GuestCartLine[]) => { unwrap: () => Promise<unknown> },
   clearGuest: () => void,
 ): Promise<void> {
-  if (guestItems.length === 0) {
+  if (env.demoCatalog || guestItems.length === 0) {
     return;
   }
 

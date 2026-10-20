@@ -9,6 +9,11 @@ export const PRODUCT_COLORS: ProductColorOption[] = [
   { name: 'Beige', value: '#d8c6ad' },
   { name: 'Brown', value: '#6f5240' },
   { name: 'Burgundy', value: '#5d2a2f' },
+  { name: 'Navy', value: '#26364a' },
+  { name: 'Grey', value: '#8a8a86' },
+  { name: 'Olive', value: '#5f6248' },
+  { name: 'Indigo', value: '#33465f' },
+  { name: 'Stone', value: '#b9b3a7' },
 ];
 
 const FALLBACK_COLOR = '#cbbca6';

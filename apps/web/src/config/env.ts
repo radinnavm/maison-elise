@@ -5,7 +5,11 @@ interface AppEnv {
   siteUrl: string;
   /** Global indexing kill switch (set VITE_ALLOW_INDEXING=false for staging). */
   allowIndexing: boolean;
+  /** Serve the local, database-independent demo catalog instead of the API. */
+  demoCatalog: boolean;
 }
+
+const demoCatalog = import.meta.env.VITE_DEMO_CATALOG !== 'false';
 
 const apiUrl = import.meta.env.VITE_API_URL ?? '/api/v1';
 
@@ -22,4 +26,5 @@ export const env: AppEnv = {
   isDevelopment: import.meta.env.DEV,
   siteUrl,
   allowIndexing: import.meta.env.VITE_ALLOW_INDEXING !== 'false',
+  demoCatalog,
 };

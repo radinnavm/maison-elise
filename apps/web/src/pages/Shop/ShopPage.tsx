@@ -1,7 +1,5 @@
 import { useMemo, useState } from 'react';
 
-import { useGetCategoriesQuery } from '@/api/categoriesApi';
-import { useGetProductsQuery } from '@/api/productsApi';
 import { Button, ButtonLink } from '@/components/Button/Button';
 import { EmptyState } from '@/components/EmptyState/EmptyState';
 import { FilterDrawer } from '@/components/Filters/FilterDrawer';
@@ -14,6 +12,7 @@ import { Seo } from '@/components/Seo/Seo';
 import { buildShopSeo, truncate } from '@/components/Seo/metadata';
 import { ErrorState } from '@/components/StateMessage/ErrorState';
 import { LoadingState } from '@/components/StateMessage/LoadingState';
+import { useCatalogCategories, useCatalogProducts } from '@/data/catalogSource';
 import { useCatalogFilters } from '@/hooks/useCatalogFilters';
 import { buildProductQuery, formatCount } from '@/utils/catalog';
 
@@ -33,8 +32,8 @@ export function ShopPage() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const query = useMemo(() => buildProductQuery(filters), [filters]);
-  const { data, isLoading, isFetching, isError, refetch } = useGetProductsQuery(query);
-  const { data: categories = [] } = useGetCategoriesQuery();
+  const { data, isLoading, isFetching, isError, refetch } = useCatalogProducts(query);
+  const { data: categories = [] } = useCatalogCategories();
 
   const activeCategory = filters.category
     ? categories.find((category) => category.slug === filters.category)

@@ -51,7 +51,6 @@ export function buildProductJsonLd(product: Product, siteUrl: string): Record<st
     '@type': 'Product',
     name: product.name,
     description: product.description,
-    image: product.images.map((image) => image.url),
     ...(sku ? { sku } : {}),
     category: product.category.name,
     url,

@@ -1,13 +1,7 @@
-import { existsSync } from 'node:fs';
-import { dirname, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
-
 import { describe, expect, it } from 'vitest';
 
 import { queryDemoProducts } from './catalogSource';
 import { demoCategories, demoProducts } from './demoProducts';
-
-const publicDir = resolve(dirname(fileURLToPath(import.meta.url)), '../../public');
 
 function categoryCount(category: string): number {
   return demoProducts.filter((product) => product.category.slug === category).length;
@@ -46,20 +40,9 @@ describe('demo catalog', () => {
     expect(categoryCount('men-denim')).toBe(4);
   });
 
-  it('points every product at an existing local image and never reuses a photo', () => {
-    const imageUrls = demoProducts.flatMap((product) => product.images.map((image) => image.url));
-
-    expect(imageUrls).toHaveLength(60);
-    expect(new Set(imageUrls).size).toBe(60);
-
+  it('uses initials placeholders instead of product photography', () => {
     for (const product of demoProducts) {
-      expect(product.images.length).toBeGreaterThan(0);
-
-      for (const image of product.images) {
-        expect(image.url.startsWith('/images/products/')).toBe(true);
-        expect(image.alt.length).toBeGreaterThan(0);
-        expect(existsSync(resolve(publicDir, image.url.slice(1)))).toBe(true);
-      }
+      expect(product.images).toEqual([]);
     }
   });
 

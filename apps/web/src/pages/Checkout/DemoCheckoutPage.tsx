@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import { Button, ButtonLink } from '@/components/Button/Button';
 import { EmptyState } from '@/components/EmptyState/EmptyState';
+import { ProductImagePlaceholder } from '@/components/ProductImagePlaceholder/ProductImagePlaceholder';
 import { Seo } from '@/components/Seo/Seo';
 import { useCart } from '@/hooks/useCart';
 import { formatPrice } from '@/utils/format';
@@ -99,15 +100,9 @@ export function DemoCheckoutPage() {
             <ul className={styles.items}>
               {cart.items.map((line) => (
                 <li key={line.variantId} className={styles.item}>
-                  <img
-                    className={styles.image}
-                    src={line.image}
-                    alt={line.name}
-                    width="120"
-                    height="150"
-                    loading="lazy"
-                    decoding="async"
-                  />
+                  <div className={styles.image}>
+                    <ProductImagePlaceholder name={line.name} />
+                  </div>
                   <div className={styles.info}>
                     <p className={styles.meta}>
                       {line.color} / {line.size}

@@ -3,11 +3,11 @@ import { Link } from 'react-router';
 import { useAppDispatch, useAppSelector } from '@/app/hooks';
 import { HeartIcon } from '@/components/icons/Icons';
 import { IconButton } from '@/components/IconButton/IconButton';
-import { ProductPlaceholder } from '@/components/ProductPlaceholder/ProductPlaceholder';
+import { ProductImagePlaceholder } from '@/components/ProductImagePlaceholder/ProductImagePlaceholder';
 import { selectIsWishlisted, toggleWishlist } from '@/features/wishlist/wishlistSlice';
 import type { Product } from '@/types/product';
 import { formatPrice } from '@/utils/format';
-import { getPrimaryImage, isInStock, isOnSale } from '@/utils/product';
+import { isInStock, isOnSale } from '@/utils/product';
 
 import styles from './ProductCard.module.css';
 
@@ -29,7 +29,6 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
         productId: product.id,
         slug: product.slug,
         name: product.name,
-        image: getPrimaryImage(product),
         price: product.price,
       }),
     );
@@ -43,7 +42,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
           className={styles.imageLink}
           aria-label={`View ${product.name}`}
         >
-          <ProductPlaceholder name={product.name} />
+          <ProductImagePlaceholder name={product.name} />
         </Link>
 
         <div className={styles.badges}>

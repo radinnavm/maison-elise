@@ -12,6 +12,12 @@
   min-width: 0;
 }
 
+.gallery {
+  overflow: hidden;
+  background-color: var(--color-background-alt);
+  aspect-ratio: 4 / 5;
+}
+
 .infoColumn {
   min-width: 0;
   max-width: 34rem;

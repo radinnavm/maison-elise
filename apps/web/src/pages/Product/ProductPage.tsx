@@ -8,8 +8,8 @@ import { Button, ButtonLink } from '@/components/Button/Button';
 import { ColorSelector } from '@/components/ColorSelector/ColorSelector';
 import { EmptyState } from '@/components/EmptyState/EmptyState';
 import { HeartIcon } from '@/components/icons/Icons';
-import { ProductGallery } from '@/components/ProductGallery/ProductGallery';
 import { ProductGrid } from '@/components/ProductGrid/ProductGrid';
+import { ProductImagePlaceholder } from '@/components/ProductImagePlaceholder/ProductImagePlaceholder';
 import { QuantitySelector } from '@/components/QuantitySelector/QuantitySelector';
 import { Seo } from '@/components/Seo/Seo';
 import { buildProductJsonLd, truncate } from '@/components/Seo/metadata';
@@ -22,7 +22,7 @@ import { selectIsWishlisted, toggleWishlist } from '@/features/wishlist/wishlist
 import { useCart } from '@/hooks/useCart';
 import type { Product } from '@/types/product';
 import { formatPrice } from '@/utils/format';
-import { getPrimaryImage, isInStock, isOnSale } from '@/utils/product';
+import { isInStock, isOnSale } from '@/utils/product';
 
 import styles from './ProductPage.module.css';
 
@@ -213,7 +213,7 @@ function ProductDetailView({ product }: ProductDetailViewProps) {
         productId: product.id,
         slug: product.slug,
         name: product.name,
-        image: getPrimaryImage(product),
+        image: '',
         size: selectedVariant.size,
         color: selectedVariant.color,
         unitPrice: selectedVariant.price,
@@ -239,7 +239,6 @@ function ProductDetailView({ product }: ProductDetailViewProps) {
         productId: product.id,
         slug: product.slug,
         name: product.name,
-        image: getPrimaryImage(product),
         price: product.price,
       }),
     );
@@ -254,7 +253,6 @@ function ProductDetailView({ product }: ProductDetailViewProps) {
         description={truncate(product.description)}
         canonicalPath={`/product/${product.slug}`}
         ogType="product"
-        ogImage={product.images[0]?.url}
         jsonLd={buildProductJsonLd(product, env.siteUrl)}
       />
       <Breadcrumbs
@@ -267,7 +265,9 @@ function ProductDetailView({ product }: ProductDetailViewProps) {
 
       <div className={styles.layout}>
         <div className={styles.galleryColumn}>
-          <ProductGallery images={product.images} productName={product.name} />
+          <div className={styles.gallery}>
+            <ProductImagePlaceholder name={product.name} />
+          </div>
         </div>
 
         <div className={styles.infoColumn}>

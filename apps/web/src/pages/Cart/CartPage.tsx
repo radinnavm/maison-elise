@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import { getErrorMessage } from '@/api/apiError';
 import { Button, ButtonLink } from '@/components/Button/Button';
 import { EmptyState } from '@/components/EmptyState/EmptyState';
+import { ProductImagePlaceholder } from '@/components/ProductImagePlaceholder/ProductImagePlaceholder';
 import { QuantitySelector } from '@/components/QuantitySelector/QuantitySelector';
 import { Seo } from '@/components/Seo/Seo';
 import { ErrorState } from '@/components/StateMessage/ErrorState';
@@ -72,15 +73,7 @@ export function CartPage() {
                   className={styles.imageLink}
                   aria-label={`View ${line.name}`}
                 >
-                  <img
-                    className={styles.image}
-                    src={line.image}
-                    alt={line.name}
-                    width="160"
-                    height="200"
-                    loading="lazy"
-                    decoding="async"
-                  />
+                  <ProductImagePlaceholder name={line.name} />
                 </Link>
 
                 <div className={styles.info}>

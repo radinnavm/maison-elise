@@ -10,6 +10,7 @@ import { useAppSelector } from '@/app/hooks';
 import { AddressForm } from '@/components/AddressForm/AddressForm';
 import { Button, ButtonLink } from '@/components/Button/Button';
 import { EmptyState } from '@/components/EmptyState/EmptyState';
+import { ProductImagePlaceholder } from '@/components/ProductImagePlaceholder/ProductImagePlaceholder';
 import { Seo } from '@/components/Seo/Seo';
 import { LoadingState } from '@/components/StateMessage/LoadingState';
 import { env } from '@/config/env';
@@ -185,15 +186,9 @@ function LiveCheckoutPage() {
               <ul className={styles.items}>
                 {cart.items.map((line) => (
                   <li key={line.variantId} className={styles.item}>
-                    <img
-                      className={styles.image}
-                      src={line.image}
-                      alt={line.name}
-                      width="120"
-                      height="150"
-                      loading="lazy"
-                      decoding="async"
-                    />
+                    <div className={styles.image}>
+                      <ProductImagePlaceholder name={line.name} />
+                    </div>
                     <div className={styles.info}>
                       <p className={styles.meta}>
                         {line.color} / {line.size}

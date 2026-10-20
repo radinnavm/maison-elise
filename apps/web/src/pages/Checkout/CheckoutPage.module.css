@@ -63,8 +63,7 @@
 
 .image {
   width: 100%;
-  height: auto;
-  object-fit: cover;
+  overflow: hidden;
   background-color: var(--color-background-alt);
   aspect-ratio: 4 / 5;
 }
